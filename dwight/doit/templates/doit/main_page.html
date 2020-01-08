@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% for show in show_list %}
+    <div>
+      <a href="{{show.get_absolute_url}}">{{show.title}}</a><br/>
+      <img src="{{show.thumb.url}}" class="index-thumb">
+    </div>
+  {% endfor %}
+{% endblock %}

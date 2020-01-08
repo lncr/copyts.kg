@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+  {{show.title}}-{{block.super}}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h2>{{show.title}}</h2>
+    <div class="">
+      {{show.summary}}
+    </div>
+    <div class="mb-10">
+      {% for genre in show.genres.all %}
+        <p><a href="{{genre.get_absolute_url}}">#{{genre}}</a></p>
+      {% endfor %}
+    </div>
+    <img src="{{show.thumb.url}}" class="index-thumb">
+    {% for season in show.season_set.all %}
+      <div>Season-{{season.number}}
+        <nav aria-label = "...">
+          <ul class="pagination pagination-sm">
+            {% for episode in season.episode_set.all %}
+            <span class="page-link">
+            <li class="page-item"><a href="{{episode.get_absolute_url}}">{{episode.number}}</a></li>
+            </span>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    {% endfor %}
+
+{% endblock %}

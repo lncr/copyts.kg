@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{episode}}
+{% endblock %}
+
+{% block content %}
+  <h3>{{episode.season.show.title}}</h3>
+  <h4>Season {{episode.season.number}}</h4>
+  <h4>Episode {{episode.number}}</h4>
+  <video src="{{episode.file.url}}" autoplay poster="posterimage.jpg">
+
+  </video>
+{% endblock %}
